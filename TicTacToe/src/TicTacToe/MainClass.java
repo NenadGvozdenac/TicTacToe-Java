@@ -7,7 +7,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,11 +43,11 @@ public class MainClass {
 		JButton[][] buttons = new JButton[3][3];
 		
 		create_buttons(buttons);
-		add_func(buttons);
+		add_functionality(buttons);
 		
 		for(JButton[] onedimensionbuttons: buttons) {
 			for(JButton button : onedimensionbuttons) {
-				add_functionality(button);
+				add_text_to_buttons(button);
 				panel.add(button);
 			}
 		}
@@ -69,26 +70,62 @@ public class MainClass {
 		}
 	}
 	
-	public static void add_functionality(JButton button) {
-		button.addActionListener(new ActionListener() {
+	public static void add_text_to_buttons(JButton button) {
+		
+		button.setFont(new Font("Arial", Font.BOLD, 100));
+		button.setForeground(Color.BLACK);
+		
+		button.addMouseListener(new MouseListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				button.setEnabled(false);
-				button.setText(start[turn].toString());
-				button.setFont(new Font("Arial", Font.BOLD, 100));
-				button.setForeground(Color.BLACK);
-				if(turn == 0) {
-					turn = 1; 
-				} else {
-					turn = 0;
+			public void mouseClicked(MouseEvent e) {
+				if(button.isEnabled()) {
+					button.setEnabled(false);
+					button.setText(start[turn].toString());
+					if(turn == 0) {
+						turn = 1; 
+					} else {
+						turn = 0;
+					}
 				}
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				if(button.isEnabled()) {
+					button.setText(start[turn].toString());
+					button.setBackground(new Color(204, 255, 204));
+				} else {
+					button.setBackground(new Color(255, 80, 80));
+				}
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if(button.isEnabled()) {
+					button.setText("");
+				}
+				button.setBackground(Color.white);
+				
 			}
 			
 		});
+		
 	}
 	
-	public static void add_func(JButton[][] button) {
+	public static void add_functionality(JButton[][] button) {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				button[i][j].addActionListener(new ActionListener() {
@@ -124,9 +161,7 @@ public class MainClass {
 							}
 							
 							if(gameover) {
-								if(turn == 1)	turn = 0;
-								else			turn = 1;
-								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!\nnMADE BY NENAD GVOZDENAC, FTN 2021", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!\nMADE BY NENAD GVOZDENAC, FTN 2021", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
 								System.exit(1);
 							}
 							
