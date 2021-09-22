@@ -37,7 +37,7 @@ public class MainClass {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBounds(frame.getBounds());
-		panel.setBackground(Color.gray);
+		panel.setBackground(Color.black);
 		
 		JButton[][] buttons = new JButton[3][3];
 		
@@ -76,7 +76,7 @@ public class MainClass {
 			public void actionPerformed(ActionEvent e) {
 				button.setEnabled(false);
 				button.setText(start[turn].toString());
-				button.setFont(new Font("Arial", Font.BOLD, 100));
+				button.setFont(new Font("Times New Roman", Font.BOLD, 100));
 				button.setForeground(Color.BLACK);
 				if(turn == 0) {
 					turn = 1; 
@@ -112,7 +112,7 @@ public class MainClass {
 								gameover = true;
 							} else if(button[0][0].getText() == button[1][1].getText() && button[1][1].getText() == button[2][2].getText() && button[0][0].getText() != "" && button[1][1].getText() != "" && button[2][2].getText() != "") {
 								gameover = true;
-							} else if(button[0][2].getText() == button[1][1].getText() && button[1][1].getText() == button[2][0].getText() && button[2][0].getText() != "" && button[1][1].getText() != "" && button[0][2].getText() != "") {
+							} else if(button[0][2].getText() == button[1][1].getText() && button[1][1].getText() == button[2][1].getText() && button[2][1].getText() != "" && button[1][1].getText() != "" && button[0][2].getText() != "") {
 								gameover = true;
 							}
 							
@@ -126,14 +126,12 @@ public class MainClass {
 							if(gameover) {
 								if(turn == 1)	turn = 0;
 								else			turn = 1;
-								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!\nnMADE BY NENAD GVOZDENAC, FTN 2021", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
 								System.exit(1);
 							}
 							
-							if(popunjen == 9) {
-								JOptionPane.showMessageDialog(null, "THERE WERE NO WINNERS THIS ROUND!\nMADE BY NENAD GVOZDENAC, FTN 2021", "NO WINNERS", JOptionPane.PLAIN_MESSAGE); 
-								System.exit(1);
-							}
+							if(popunjen == 9)
+								JOptionPane.showMessageDialog(null, "THERE WERE NO WINNERS THIS ROUND!", "NO WINNERS", JOptionPane.PLAIN_MESSAGE);
 							
 							popunjen = 0;
 

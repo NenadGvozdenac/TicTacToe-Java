@@ -126,12 +126,12 @@ public class MainClass {
 							if(gameover) {
 								if(turn == 1)	turn = 0;
 								else			turn = 1;
-								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!\nnMADE BY NENAD GVOZDENAC, FTN 2021", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, start[turn] + " WON THIS GAME\nCONGRATULATIONS!", "CONGRATS", JOptionPane.PLAIN_MESSAGE);
 								System.exit(1);
 							}
 							
 							if(popunjen == 9) {
-								JOptionPane.showMessageDialog(null, "THERE WERE NO WINNERS THIS ROUND!\nMADE BY NENAD GVOZDENAC, FTN 2021", "NO WINNERS", JOptionPane.PLAIN_MESSAGE); 
+								JOptionPane.showMessageDialog(null, "THERE WERE NO WINNERS THIS ROUND!", "NO WINNERS", JOptionPane.PLAIN_MESSAGE); 
 								System.exit(1);
 							}
 							
